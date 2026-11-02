@@ -62,6 +62,10 @@
     border-color: var(--accent);
     color: #fff;
   }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.92rem; }
+  .tbl { overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--card); }
   section.doc { display: none; }
   section.doc.active { display: block; }
   footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; }
@@ -108,6 +112,16 @@
     <p>Barındırma ve kimlik doğrulama altyapımız (Supabase), güvenlik ve hizmetin çalışması için IP adresi, cihaz/istek günlükleri gibi standart teknik kayıtlar tutabilir.</p>
     <h3>1.4 Toplamadıklarımız</h3>
     <p>Uygulama; konum, rehber, kamera, mikrofon, fotoğraf galerisi gibi cihaz verilerine erişmez, reklam kimliği toplamaz, reklam göstermez ve davranışsal analiz/izleme (analytics) araçları kullanmaz.</p>
+
+    <h3>1.5 Veri kategorileri özeti</h3>
+    <div class="tbl">
+    <table>
+      <tr><th>Veri</th><th>Amaç</th><th>Satılır / paylaşılır mı?</th><th>Aktarımda şifreli mi?</th><th>Silinebilir mi?</th></tr>
+      <tr><td>E-posta adresi</td><td>Uygulama işlevselliği, hesap yönetimi</td><td>Hayır</td><td>Evet</td><td>Evet</td></tr>
+      <tr><td>Diğer finansal bilgiler (kullanıcının girdiği gelir/gider, para yatışı ve satış kayıtları)</td><td>Uygulama işlevselliği, hesap yönetimi</td><td>Hayır</td><td>Evet</td><td>Evet</td></tr>
+    </table>
+    </div>
+    <p>Uygulama reklam göstermez, analitik veya izleme aracı kullanmaz ve verileriniz üçüncü kişilere satılmaz ya da reklam/pazarlama için paylaşılmaz. Verileriniz yalnızca bizim adımıza hizmet veren altyapı sağlayıcısı (Supabase) tarafından işlenir. Uygulama gerçek ödeme almaz veya para transferi yapmaz; yalnızca maliyet hesaplama ve kayıt tutma aracıdır.</p>
 
     <h2>2. Verileri Kullanma Amaçlarımız</h2>
     <ul>
@@ -193,6 +207,16 @@
     <p>Our hosting and authentication infrastructure (Supabase) may keep standard technical logs, such as IP address and request logs, for security and to operate the service.</p>
     <h3>1.4 What we do not collect</h3>
     <p>The App does not access your location, contacts, camera, microphone, or photo gallery. It does not collect advertising IDs, does not show ads, and does not use behavioral analytics or tracking tools.</p>
+
+    <h3>1.5 Summary of data categories</h3>
+    <div class="tbl">
+    <table>
+      <tr><th>Data</th><th>Purpose</th><th>Sold / shared?</th><th>Encrypted in transit?</th><th>Deletable?</th></tr>
+      <tr><td>Email address</td><td>App functionality, account management</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Other financial info (income/expense, deposit, and sales records entered by the user)</td><td>App functionality, account management</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+    </table>
+    </div>
+    <p>The App shows no ads, uses no analytics or tracking tools, and your data is not sold or shared with third parties for advertising or marketing. Your data is processed only by our infrastructure provider (Supabase) on our behalf. The App does not take real payments or transfer money; it is only a cost calculation and record-keeping tool.</p>
 
     <h2>2. How We Use Your Data</h2>
     <ul>
