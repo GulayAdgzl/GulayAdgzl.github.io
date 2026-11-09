@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hesap ve Veri Silme</title>
+<meta name="description" content="Hesabını ve tüm verilerini silme talebi">
+<style>
+  :root {
+    --bg: #f6f8f7; --card: #ffffff; --text: #1b1f1e; --muted: #5b6763;
+    --border: #dde4e1; --accent: #0f766e; --accent-text: #ffffff;
+    --danger: #b42318; --danger-bg: #fef3f2; --ok: #067647; --ok-bg: #ecfdf3;
+    --field: #f1f4f3;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101413; --card: #181d1b; --text: #edf1ef; --muted: #9aa7a2;
+      --border: #2a322f; --accent: #2dd4bf; --accent-text: #06201c;
+      --danger: #fda29b; --danger-bg: #3a1613; --ok: #75e0a7; --ok-bg: #0f2a1c;
+      --field: #222926;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.55;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  }
+  main { max-width: 640px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 8px 0 4px; }
+  h2 { font-size: 1.1rem; margin: 0 0 8px; }
+  p { margin: 0 0 12px; }
+  .muted { color: var(--muted); font-size: 0.92rem; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 18px; margin: 16px 0;
+  }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin: 4px 0; }
+  label { display: block; font-size: 0.9rem; font-weight: 600; margin: 12px 0 6px; }
+  input[type=email], input[type=password], textarea {
+    width: 100%; font: inherit; color: inherit; background: var(--field);
+    border: 1px solid transparent; border-radius: 12px; padding: 12px 14px;
+  }
+  textarea { min-height: 84px; resize: vertical; }
+  input:focus, textarea:focus { outline: 2px solid var(--accent); }
+  .check { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0; font-size: 0.92rem; }
+  .check input { margin-top: 4px; width: 18px; height: 18px; flex: none; }
+  button {
+    font: inherit; font-weight: 600; border: 0; border-radius: 12px;
+    padding: 13px 18px; cursor: pointer; width: 100%;
+  }
+  .btn-danger { background: var(--danger); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn-danger { color: #3a0b07; } }
+  .btn-accent { background: var(--accent); color: var(--accent-text); }
+  button:disabled { opacity: 0.55; cursor: not-allowed; }
+  .status { border-radius: 12px; padding: 12px 14px; margin-top: 14px; display: none; font-size: 0.95rem; }
+  .status.show { display: block; }
+  .status.error { background: var(--danger-bg); color: var(--danger); }
+  .status.ok { background: var(--ok-bg); color: var(--ok); }
+  .warn { background: var(--danger-bg); color: var(--danger); border-radius: 12px; padding: 12px 14px; display: none; }
+  footer { margin-top: 24px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1><span data-app-name>Uygulama</span> — Hesap ve Veri Silme</h1>
+  <p class="muted">Geliştirici: <span data-developer>Geliştirici adı</span></p>
+
+  <div id="config-warning" class="warn">
+    Bu sayfa henüz yapılandırılmadı: sayfanın içindeki <b>ANON_KEY</b> değerini doldur.
+  </div>
+
+  <section class="card">
+    <h2>Neler silinir?</h2>
+    <p>Hesabını sildiğinde şunlar <b>kalıcı olarak</b> silinir ve geri getirilemez:</p>
+    <ul>
+      <li>E-posta ve şifreyle oluşturduğun hesap</li>
+      <li>Ürünler, reçeteler, malzemeler, hammaddeler ve fiyat geçmişi</li>
+      <li>Maliyet hesaplamaları</li>
+      <li>Gelir, gider ve satış kayıtları</li>
+      <li>Not defterindeki notlar</li>
+    </ul>
+    <p class="muted">Sistem yedeklerinde (varsa) kalan kopyalar en geç 30 gün içinde silinir. Yasal bir saklama zorunluluğu olmayan hiçbir kişisel veri tutulmaz.</p>
+  </section>
+
+  <section class="card" aria-labelledby="yontem1">
+    <h2 id="yontem1">1) Hemen sil (hesabına giriş yaparak)</h2>
+    <p class="muted">Uygulamadaki e-posta ve şifrenle giriş yap. Doğrulama sonrası hesabın anında silinir.</p>
+    <form id="delete-form" novalidate>
+      <label for="d-email">E-posta</label>
+      <input id="d-email" type="email" autocomplete="email" inputmode="email" required>
+      <label for="d-pass">Şifre</label>
+      <input id="d-pass" type="password" autocomplete="current-password" required>
+      <div class="check">
+        <input id="d-confirm" type="checkbox">
+        <label for="d-confirm" style="margin:0;font-weight:400">Hesabımın ve tüm verilerimin kalıcı olarak silineceğini, bunun geri alınamayacağını anlıyorum.</label>
+      </div>
+      <button id="d-btn" class="btn-danger" type="submit">Hesabımı ve verilerimi sil</button>
+      <div id="d-status" class="status" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="card" aria-labelledby="yontem2">
+    <h2 id="yontem2">2) Giriş yapamıyorum, silme talebi bırak</h2>
+    <p class="muted">Şifreni unuttuysan ya da hesabına erişemiyorsan hesabı oluştururken kullandığın e-postayı yaz. Talebin kaydedilir; kimliğini doğrulamak için gerekirse bu adresten sana yazılır ve talep en geç <b>30 gün içinde</b> sonuçlandırılır.</p>
+    <form id="request-form" novalidate>
+      <label for="r-email">Hesabın e-posta adresi</label>
+      <input id="r-email" type="email" autocomplete="email" inputmode="email" required>
+      <label for="r-note">Not (isteğe bağlı)</label>
+      <textarea id="r-note" maxlength="1000"></textarea>
+      <button id="r-btn" class="btn-accent" type="submit" style="margin-top:14px">Silme talebi gönder</button>
+      <div id="r-status" class="status" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <footer class="muted">
+    <p>Sorular için: <a id="contact-link" href="#"><span data-contact>iletisim@ornek.com</span></a></p>
+    <p><a href="kasivo_privacy.html">Gizlilik Politikası</a></p>
+  </footer>
+</main>
+
+<script>
+  // ====== BURAYI DOLDUR ======
+  const CONFIG = {
+    appName: 'Kasivo',                               // Play Store'daki uygulama adıyla aynı olmalı
+    developer: 'GELİŞTİRİCİ ADI',                    // Play Console'daki geliştirici adıyla aynı olmalı
+    contactEmail: 'iletisim@ornek.com',              // gerçek iletişim e-postan
+    supabaseUrl: 'https://fzhkbfsitjvfqefuxlim.supabase.co',
+    anonKey: 'BURAYA_ANON_KEY',                      // Supabase > Project Settings > API Keys > anon public
+  };
+  // ===========================
+
+  document.title = CONFIG.appName + ' — Hesap ve Veri Silme';
+  document.querySelectorAll('[data-app-name]').forEach(e => e.textContent = CONFIG.appName);
+  document.querySelectorAll('[data-developer]').forEach(e => e.textContent = CONFIG.developer);
+  document.querySelectorAll('[data-contact]').forEach(e => e.textContent = CONFIG.contactEmail);
+  document.getElementById('contact-link').href = 'mailto:' + CONFIG.contactEmail;
+  if (CONFIG.anonKey.startsWith('BURAYA')) {
+    document.getElementById('config-warning').style.display = 'block';
+  }
+
+  function show(el, type, text) {
+    el.className = 'status show ' + type;
+    el.textContent = text;
+  }
+  const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  // ---- 1) Giriş yapıp hemen sil ----
+  document.getElementById('delete-form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const status = document.getElementById('d-status');
+    const btn = document.getElementById('d-btn');
+    const email = document.getElementById('d-email').value.trim();
+    const pass = document.getElementById('d-pass').value;
+    const confirmed = document.getElementById('d-confirm').checked;
+
+    if (!emailOk(email) || !pass) return show(status, 'error', 'Lütfen e-posta ve şifreni gir.');
+    if (!confirmed) return show(status, 'error', 'Devam etmek için onay kutusunu işaretle.');
+
+    btn.disabled = true;
+    show(status, 'ok', 'Doğrulanıyor…');
+    try {
+      const login = await fetch(CONFIG.supabaseUrl + '/auth/v1/token?grant_type=password', {
+        method: 'POST',
+        headers: { 'apikey': CONFIG.anonKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass }),
+      });
+      const session = await login.json();
+      if (!login.ok || !session.access_token) {
+        show(status, 'error', 'E-posta veya şifre hatalı.');
+        btn.disabled = false;
+        return;
+      }
+
+      show(status, 'ok', 'Hesap siliniyor…');
+      const del = await fetch(CONFIG.supabaseUrl + '/functions/v1/delete-account', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + session.access_token,
+          'apikey': CONFIG.anonKey,
+          'Content-Type': 'application/json',
+        },
+        body: '{}',
+      });
+      if (!del.ok) {
+        show(status, 'error', 'Hesap silinemedi. Lütfen biraz sonra tekrar dene ya da aşağıdaki talep formunu kullan.');
+        btn.disabled = false;
+        return;
+      }
+      document.getElementById('delete-form').reset();
+      show(status, 'ok', 'Hesabın ve tüm verilerin kalıcı olarak silindi.');
+    } catch (e) {
+      show(status, 'error', 'Bağlantı hatası. İnternetini kontrol edip tekrar dene.');
+      btn.disabled = false;
+    }
+  });
+
+  // ---- 2) Talep bırak ----
+  document.getElementById('request-form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const status = document.getElementById('r-status');
+    const btn = document.getElementById('r-btn');
+    const email = document.getElementById('r-email').value.trim();
+    const note = document.getElementById('r-note').value.trim();
+
+    if (!emailOk(email)) return show(status, 'error', 'Lütfen geçerli bir e-posta adresi gir.');
+
+    btn.disabled = true;
+    try {
+      const res = await fetch(CONFIG.supabaseUrl + '/rest/v1/account_deletion_request', {
+        method: 'POST',
+        headers: {
+          'apikey': CONFIG.anonKey,
+          'Authorization': 'Bearer ' + CONFIG.anonKey,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify({ email, note: note || null }),
+      });
+      if (!res.ok) {
+        show(status, 'error', 'Talep gönderilemedi. Lütfen tekrar dene ya da ' + CONFIG.contactEmail + ' adresine yaz.');
+        btn.disabled = false;
+        return;
+      }
+      document.getElementById('request-form').reset();
+      show(status, 'ok', 'Talebin alındı. En geç 30 gün içinde sonuçlandırılacak, gerekirse e-posta ile bilgi verilecek.');
+    } catch (e) {
+      show(status, 'error', 'Bağlantı hatası. İnternetini kontrol edip tekrar dene.');
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
