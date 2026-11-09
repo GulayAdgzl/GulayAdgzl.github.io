@@ -2,305 +2,165 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kasivo – Gizlilik Politikası / Privacy Policy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gizlilik Politikası</title>
+<meta name="description" content="Gizlilik Politikası ve Kişisel Verilerin Korunması">
 <style>
   :root {
-    --bg: #ffffff;
-    --fg: #1f2933;
-    --muted: #616e7c;
-    --accent: #00796b;
-    --card: #f5f7fa;
-    --border: #e1e5ea;
+    --bg: #f6f8f7; --card: #ffffff; --text: #1b1f1e; --muted: #5b6763;
+    --border: #dde4e1; --accent: #0f766e;
+    color-scheme: light dark;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #12171c;
-      --fg: #e4e7eb;
-      --muted: #9aa5b1;
-      --accent: #4db6ac;
-      --card: #1b222a;
-      --border: #2d3640;
+      --bg: #101413; --card: #181d1b; --text: #edf1ef; --muted: #9aa7a2;
+      --border: #2a322f; --accent: #2dd4bf;
     }
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.65;
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
-  header { margin-bottom: 24px; }
-  h1 { font-size: 1.8rem; margin: 0 0 4px; }
-  h2 { font-size: 1.2rem; margin: 32px 0 8px; color: var(--accent); }
-  h3 { font-size: 1rem; margin: 20px 0 4px; }
-  p, li { font-size: 1rem; }
-  ul { padding-left: 22px; }
-  a { color: var(--accent); }
-  .meta { color: var(--muted); font-size: 0.9rem; }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin: 8px 0 4px; }
+  h2 { font-size: 1.1rem; margin: 0 0 8px; }
+  p { margin: 0 0 12px; }
+  .muted { color: var(--muted); font-size: 0.92rem; }
   .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin: 16px 0;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 18px; margin: 14px 0;
   }
-  .lang { display: flex; gap: 8px; margin-bottom: 20px; }
-  .lang button {
-    font: inherit;
-    padding: 6px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--fg);
-    cursor: pointer;
-  }
-  .lang button[aria-pressed="true"] {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.92rem; }
-  .tbl { overflow-x: auto; }
-  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
-  th { background: var(--card); }
-  section.doc { display: none; }
-  section.doc.active { display: block; }
-  footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.93rem; margin-bottom: 8px; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 6px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; }
+  .scroll { overflow-x: auto; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<main>
+  <h1>Gizlilik Politikası</h1>
+  <p class="muted"><span data-app-name>Uygulama</span> · Son güncelleme: <span data-updated>—</span></p>
 
-  <div class="lang" role="group" aria-label="Language">
-    <button id="btn-tr" type="button" aria-pressed="true">Türkçe</button>
-    <button id="btn-en" type="button" aria-pressed="false">English</button>
-  </div>
-
-  <!-- ===================== TÜRKÇE ===================== -->
-  <section class="doc active" id="doc-tr" lang="tr">
-    <header>
-      <h1>Gizlilik Politikası – Kasivo</h1>
-      <p class="meta">Son güncelleme: 2 Kasım 2026</p>
-    </header>
-
-    <p>Bu Gizlilik Politikası, <strong>Kasivo</strong> mobil uygulamasının (“Uygulama”) kişisel verilerinizi nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklar. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
-
-    <div class="card">
-      <strong>Geliştirici / Veri Sorumlusu:</strong> Gülay ADIGÜZEL<br>
-      <strong>İletişim:</strong> <a href="mailto:glyadgzl@hotmail.com">glyadgzl@hotmail.com</a>
-    </div>
-
-    <h2>1. Topladığımız Veriler</h2>
-    <h3>1.1 Hesap bilgileri</h3>
-    <ul>
-      <li><strong>E-posta adresi:</strong> Hesap oluşturmak ve giriş yapmak için.</li>
-      <li><strong>Şifre:</strong> Kimlik doğrulama hizmeti tarafından şifrelenmiş (hash) olarak saklanır. Biz şifrenizi düz metin olarak görmeyiz ve saklamayız.</li>
-    </ul>
-    <h3>1.2 Uygulamaya kendi girdiğiniz veriler</h3>
-    <p>Uygulamayı kullanırken girdiğiniz aşağıdaki iş verileri hesabınıza bağlı olarak saklanır:</p>
-    <ul>
-      <li>Ürünler, satış fiyatları, reçeteler</li>
-      <li>Malzeme ve hammaddeler, birimleri ve fiyat geçmişi</li>
-      <li>Maliyet hesaplamaları ve maliyet geçmişi</li>
-      <li>Gelir ve gider kayıtları (platform para yatışları, nakit/kredi satışlar, giderler) ve ilgili notlar</li>
-      <li>Not defteri kayıtları</li>
-    </ul>
-    <h3>1.3 Otomatik toplanan teknik veriler</h3>
-    <p>Barındırma ve kimlik doğrulama altyapımız (Supabase), güvenlik ve hizmetin çalışması için IP adresi, cihaz/istek günlükleri gibi standart teknik kayıtlar tutabilir.</p>
-    <h3>1.4 Toplamadıklarımız</h3>
-    <p>Uygulama; konum, rehber, kamera, mikrofon, fotoğraf galerisi gibi cihaz verilerine erişmez, reklam kimliği toplamaz, reklam göstermez ve davranışsal analiz/izleme (analytics) araçları kullanmaz.</p>
-
-    <h3>1.5 Veri kategorileri özeti</h3>
-    <div class="tbl">
-    <table>
-      <tr><th>Veri</th><th>Amaç</th><th>Satılır / paylaşılır mı?</th><th>Aktarımda şifreli mi?</th><th>Silinebilir mi?</th></tr>
-      <tr><td>E-posta adresi</td><td>Uygulama işlevselliği, hesap yönetimi</td><td>Hayır</td><td>Evet</td><td>Evet</td></tr>
-      <tr><td>Diğer finansal bilgiler (kullanıcının girdiği gelir/gider, para yatışı ve satış kayıtları)</td><td>Uygulama işlevselliği, hesap yönetimi</td><td>Hayır</td><td>Evet</td><td>Evet</td></tr>
-    </table>
-    </div>
-    <p>Uygulama reklam göstermez, analitik veya izleme aracı kullanmaz ve verileriniz üçüncü kişilere satılmaz ya da reklam/pazarlama için paylaşılmaz. Verileriniz yalnızca bizim adımıza hizmet veren altyapı sağlayıcısı (Supabase) tarafından işlenir. Uygulama gerçek ödeme almaz veya para transferi yapmaz; yalnızca maliyet hesaplama ve kayıt tutma aracıdır.</p>
-
-    <h2>2. Verileri Kullanma Amaçlarımız</h2>
-    <ul>
-      <li>Hesabınızı oluşturmak ve oturumunuzu yönetmek</li>
-      <li>Maliyet, gelir/gider ve rapor özelliklerini size sunmak</li>
-      <li>Verilerinizi cihazlarınız arasında erişilebilir tutmak</li>
-      <li>Uygulamanın güvenliğini sağlamak ve hataları gidermek</li>
-    </ul>
-    <p>Verileriniz <strong>satılmaz</strong>, reklam veya pazarlama amacıyla kullanılmaz.</p>
-
-    <h2>3. Verilerin Paylaşımı</h2>
-    <p>Verileriniz üçüncü kişilerle paylaşılmaz; yalnızca hizmeti sunmak için kullandığımız aşağıdaki hizmet sağlayıcı tarafından, bizim adımıza işlenir:</p>
-    <ul>
-      <li><strong>Supabase</strong> (kimlik doğrulama ve veritabanı barındırma) – <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></li>
-    </ul>
-    <p>Ayrıca yasal bir zorunluluk (mahkeme kararı, resmi makam talebi) olması halinde ilgili mercilerle paylaşım yapılabilir.</p>
-
-    <h2>4. Verilerin Saklanması ve Güvenliği</h2>
-    <p>Verileriniz Supabase altyapısında saklanır ve aktarım sırasında HTTPS/TLS ile şifrelenir. Her kullanıcının verisine yalnızca kendi hesabı üzerinden erişilebilmesi için erişim kontrolleri uygulanır. Hiçbir yöntem %100 güvenli olmasa da verilerinizi korumak için makul teknik ve idari önlemleri alırız.</p>
-    <p>Verilerinizi, hesabınız aktif olduğu sürece veya siz silene kadar saklarız.</p>
-
-    <h2 id="sil">5. Hesap ve Verilerin Silinmesi</h2>
-    <p>Hesabınızı ve tüm verilerinizi istediğiniz zaman silebilirsiniz:</p>
-    <ul>
-      <li><strong>Uygulama içinden:</strong> Ayarlar → <strong>Hesabı ve Verileri Sil</strong>. Bu işlem ürünlerinizi, malzemelerinizi, maliyet geçmişinizi, gelir/gider kayıtlarınızı ve notlarınızı kalıcı olarak siler ve geri alınamaz.</li>
-      <li><strong>E-posta ile:</strong> <a href="mailto:glyadgzl@hotmail.com">glyadgzl@hotmail.com</a> adresine hesabınızın e-postasıyla silme talebi gönderebilirsiniz. Talebiniz makul süre içinde (en geç 30 gün) işleme alınır.</li>
-    </ul>
-    <p>Yedekleme sistemlerindeki kalıntılar, standart yedek döngüsü içinde otomatik olarak silinir.</p>
-
-    <h2>6. Haklarınız</h2>
-    <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve ilgili mevzuat kapsamında şu haklara sahipsiniz:</p>
-    <ul>
-      <li>Verilerinizin işlenip işlenmediğini öğrenme ve bilgi talep etme</li>
-      <li>Verilerinizin düzeltilmesini veya silinmesini isteme</li>
-      <li>İşlemeye itiraz etme</li>
-      <li>Mevzuattan doğan diğer haklar</li>
-    </ul>
-    <p>Bu haklar için yukarıdaki e-posta adresinden bize ulaşabilirsiniz.</p>
-
-    <h2>7. Çocukların Gizliliği</h2>
-    <p>Uygulama 18 yaşından küçüklere yönelik değildir ve bilerek 18 yaşından küçük kişilerden veri toplamayız. Bu tür bir verinin toplandığını fark ederseniz bizimle iletişime geçin; ilgili veriyi sileriz.</p>
-
-    <h2>8. Uluslararası Veri Aktarımı</h2>
-    <p>Altyapı sağlayıcımızın sunucuları Türkiye dışında bulunabilir. Bu durumda verileriniz, hizmet sağlayıcının güvenlik taahhütleri ve geçerli mevzuat çerçevesinde işlenir.</p>
-
-    <h2>9. Politika Değişiklikleri</h2>
-    <p>Bu politikayı zaman zaman güncelleyebiliriz. Değişiklikler bu sayfada yayımlanır ve “Son güncelleme” tarihi değiştirilir. Önemli değişikliklerde uygulama içinde bilgilendirme yapılabilir.</p>
-
-    <h2>10. İletişim</h2>
-    <p>Gizlilik ile ilgili sorularınız için: <a href="mailto:glyadgzl@hotmail.com">glyadgzl@hotmail.com</a></p>
+  <section class="card">
+    <h2>1. Biz kimiz?</h2>
+    <p><b data-app-name>Uygulama</b>, küçük gıda işletmelerinin ürün maliyetini, kâr marjını, gelir ve giderlerini takip etmesini sağlayan bir mobil uygulamadır. Uygulamanın geliştiricisi ve kişisel verilerin işlenmesinden sorumlu taraf (6698 sayılı KVKK kapsamında “veri sorumlusu”): <b data-developer>Geliştirici</b>.</p>
+    <p>Bu politika, uygulamayı kullandığında hangi verilerin işlendiğini, neden işlendiğini ve haklarının neler olduğunu açıklar.</p>
   </section>
 
-  <!-- ===================== ENGLISH ===================== -->
-  <section class="doc" id="doc-en" lang="en">
-    <header>
-      <h1>Privacy Policy – Kasivo</h1>
-      <p class="meta">Last updated: November 2, 2026</p>
-    </header>
-
-    <p>This Privacy Policy explains how the <strong>Kasivo</strong> mobile application (the “App”) collects, uses, stores, and protects your personal data. By using the App, you agree to this policy.</p>
-
-    <div class="card">
-      <strong>Developer / Data Controller:</strong> Gülay ADIGÜZEL<br>
-      <strong>Contact:</strong> <a href="mailto:glyadgzl@hotmail.com">glyadgzl@hotmail.com</a>
-    </div>
-
-    <h2>1. Data We Collect</h2>
-    <h3>1.1 Account information</h3>
-    <ul>
-      <li><strong>Email address:</strong> used to create your account and sign you in.</li>
-      <li><strong>Password:</strong> stored in hashed (encrypted) form by our authentication provider. We never see or store your password in plain text.</li>
-    </ul>
-    <h3>1.2 Data you enter into the App</h3>
-    <p>The following business data that you enter is stored and linked to your account:</p>
-    <ul>
-      <li>Products, selling prices, and recipes</li>
-      <li>Ingredients and raw materials, their units, and price history</li>
-      <li>Cost calculations and cost history</li>
-      <li>Income and expense records (platform deposits, cash/card sales, expenses) and related notes</li>
-      <li>Notebook entries</li>
-    </ul>
-    <h3>1.3 Technical data collected automatically</h3>
-    <p>Our hosting and authentication infrastructure (Supabase) may keep standard technical logs, such as IP address and request logs, for security and to operate the service.</p>
-    <h3>1.4 What we do not collect</h3>
-    <p>The App does not access your location, contacts, camera, microphone, or photo gallery. It does not collect advertising IDs, does not show ads, and does not use behavioral analytics or tracking tools.</p>
-
-    <h3>1.5 Summary of data categories</h3>
-    <div class="tbl">
+  <section class="card">
+    <h2>2. Hangi verileri topluyoruz?</h2>
+    <div class="scroll">
     <table>
-      <tr><th>Data</th><th>Purpose</th><th>Sold / shared?</th><th>Encrypted in transit?</th><th>Deletable?</th></tr>
-      <tr><td>Email address</td><td>App functionality, account management</td><td>No</td><td>Yes</td><td>Yes</td></tr>
-      <tr><td>Other financial info (income/expense, deposit, and sales records entered by the user)</td><td>App functionality, account management</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+      <thead><tr><th>Veri</th><th>Ne için</th></tr></thead>
+      <tbody>
+        <tr><td><b>E-posta adresi</b></td><td>Hesap oluşturma, giriş ve hesabına erişimi doğrulama</td></tr>
+        <tr><td><b>Şifre</b></td><td>Giriş için kullanılır. Şifren, kimlik doğrulama altyapısında tek yönlü şifrelenmiş (hash) olarak saklanır; geliştirici şifreni göremez.</td></tr>
+        <tr><td><b>Senin girdiğin işletme verileri</b></td><td>Ürünler, reçeteler, malzeme ve hammaddeler, fiyatlar ve fiyat geçmişi, maliyet hesaplamaları, gelir ve gider kayıtları (platformlardan yatan tutarlar, nakit ve kredi satış tutarları, giderler) ve notlar. Bu veriler uygulamanın çalışması için senin tarafından girilir.</td></tr>
+        <tr><td><b>Teknik kayıtlar</b></td><td>IP adresi ve istek zamanı gibi bilgiler, güvenlik ve hata ayıklama amacıyla altyapı sağlayıcısının sunucu kayıtlarında otomatik tutulabilir.</td></tr>
+      </tbody>
     </table>
     </div>
-    <p>The App shows no ads, uses no analytics or tracking tools, and your data is not sold or shared with third parties for advertising or marketing. Your data is processed only by our infrastructure provider (Supabase) on our behalf. The App does not take real payments or transfer money; it is only a cost calculation and record-keeping tool.</p>
-
-    <h2>2. How We Use Your Data</h2>
-    <ul>
-      <li>To create your account and manage your session</li>
-      <li>To provide the cost, income/expense, and reporting features</li>
-      <li>To keep your data available across your devices</li>
-      <li>To keep the App secure and fix errors</li>
-    </ul>
-    <p>Your data is <strong>never sold</strong> and is not used for advertising or marketing.</p>
-
-    <h2>3. Sharing of Data</h2>
-    <p>We do not share your data with third parties. It is processed on our behalf only by the following service provider, which we use to deliver the service:</p>
-    <ul>
-      <li><strong>Supabase</strong> (authentication and database hosting) – <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></li>
-    </ul>
-    <p>Data may also be disclosed to authorities where required by law (for example, a court order or an official request).</p>
-
-    <h2>4. Data Storage and Security</h2>
-    <p>Your data is stored on Supabase infrastructure and is encrypted in transit using HTTPS/TLS. Access controls are applied so that each user can access only their own data through their own account. No method is 100% secure, but we take reasonable technical and organizational measures to protect your data.</p>
-    <p>We keep your data for as long as your account is active, or until you delete it.</p>
-
-    <h2 id="delete">5. Account and Data Deletion</h2>
-    <p>You can delete your account and all of your data at any time:</p>
-    <ul>
-      <li><strong>In the App:</strong> Settings → <strong>Delete Account and Data</strong> (“Hesabı ve Verileri Sil”). This permanently deletes your products, ingredients, cost history, income/expense records, and notes. It cannot be undone.</li>
-      <li><strong>By email:</strong> Send a deletion request from your account email to <a href="mailto:glyadgzl@hotmail.com">glyadgzl@hotmail.com</a>. We will process it within a reasonable time (no later than 30 days).</li>
-    </ul>
-    <p>Residual copies in backup systems are removed automatically within the standard backup cycle.</p>
-
-    <h2>6. Your Rights</h2>
-    <p>Under applicable data protection laws, including the Turkish Personal Data Protection Law (KVKK, Law No. 6698) and, where applicable, the GDPR, you have the right to:</p>
-    <ul>
-      <li>Learn whether your data is being processed and request information about it</li>
-      <li>Request correction or deletion of your data</li>
-      <li>Object to processing</li>
-      <li>Exercise other rights provided by law</li>
-    </ul>
-    <p>To exercise these rights, contact us at the email address above.</p>
-
-    <h2>7. Children’s Privacy</h2>
-    <p>The App is not directed at anyone under 18, and we do not knowingly collect data from people under 18. If you believe such data has been collected, contact us and we will delete it.</p>
-
-    <h2>8. International Data Transfers</h2>
-    <p>Our infrastructure provider’s servers may be located outside Turkey. In that case, your data is processed under the provider’s security commitments and applicable law.</p>
-
-    <h2>9. Changes to This Policy</h2>
-    <p>We may update this policy from time to time. Changes will be posted on this page and the “Last updated” date will be revised. For significant changes, we may notify you in the App.</p>
-
-    <h2>10. Contact</h2>
-    <p>For privacy-related questions: <a href="mailto:glyadgzl@hotmail.com">glyadgzl@hotmail.com</a></p>
+    <p><b>Toplamadıklarımız:</b> konum, rehber, fotoğraf ve kamera, mikrofon, dosyalar, kredi kartı veya ödeme bilgisi, reklam kimliği.</p>
+    <p class="muted">Uygulama yalnızca internet izni kullanır. Reklam göstermez, kullanıcı davranışı analizi yapmaz ve reklam amaçlı üçüncü taraf yazılım içermez.</p>
   </section>
 
-  <footer>© 2026 Gülay ADIGÜZEL – Kasivo</footer>
-</div>
+  <section class="card">
+    <h2>3. Verileri neden kullanıyoruz?</h2>
+    <ul>
+      <li>Hesabını oluşturmak ve giriş yapmanı sağlamak,</li>
+      <li>Girdiğin verilerle maliyet, kâr ve rapor hesaplamalarını sunmak,</li>
+      <li>Hizmetin güvenliğini sağlamak ve hataları gidermek,</li>
+      <li>Yasal yükümlülükleri yerine getirmek.</li>
+    </ul>
+    <p>Verilerin <b>satılmaz, kiralanmaz</b> ve reklam ya da profil çıkarma amacıyla kullanılmaz.</p>
+  </section>
+
+  <section class="card">
+    <h2>4. Verilerle kimlerle paylaşılır?</h2>
+    <p>Verilerin, uygulamanın veritabanı ve kimlik doğrulama hizmetini sağlayan <b>Supabase</b> altyapısında saklanır. Supabase bu verileri bizim adımıza, yalnızca hizmeti sunmak için işleyen bir hizmet sağlayıcıdır.</p>
+    <p>Bunun dışında verilerin, yalnızca yasal bir zorunluluk (mahkeme veya yetkili kurum talebi gibi) olması hâlinde ilgili makamlarla paylaşılabilir.</p>
+  </section>
+
+  <section class="card">
+    <h2>5. Verilerin saklandığı yer ve yurt dışına aktarım</h2>
+    <p>Verilerin, Supabase’in <b>Sidney (Avustralya)</b> bölgesindeki sunucularında saklanır. Bu nedenle verilerin Türkiye dışına aktarılmış olur. Uygulamayı kullanarak ve hesap oluşturarak bu aktarımın hizmetin sunulması için gerekli olduğunu kabul etmiş olursun.</p>
+  </section>
+
+  <section class="card">
+    <h2>6. Güvenlik</h2>
+    <ul>
+      <li>Uygulama ile sunucu arasındaki iletişim HTTPS ile şifrelenir.</li>
+      <li>Şifreler tek yönlü şifrelenmiş olarak saklanır.</li>
+      <li>Her kullanıcı yalnızca kendi verilerine erişebilir (satır düzeyi erişim kuralları); başka bir kullanıcının verileri görülemez.</li>
+    </ul>
+    <p class="muted">Hiçbir yöntem tam güvenlik garantisi vermez. Şifreni kimseyle paylaşmamanı ve ortak kullanılan cihazlarda oturumu kapatmanı öneririz.</p>
+  </section>
+
+  <section class="card">
+    <h2>7. Saklama süresi ve verilerini silme</h2>
+    <p>Verilerin, hesabın açık olduğu sürece saklanır. Hesabını istediğin zaman silebilirsin:</p>
+    <ul>
+      <li><b>Uygulama içinden:</b> Ürünler ekranı → Hesap → “Hesabı ve tüm verileri sil”.</li>
+      <li><b>Web üzerinden:</b> <a id="delete-link" href="kasivo_delete_account.html">Hesap ve veri silme sayfası</a>. Uygulamaya giriş yapamıyorsan aynı sayfadan silme talebi bırakabilirsin.</li>
+    </ul>
+    <p>Hesap silindiğinde tüm verilerin kalıcı olarak silinir ve geri getirilemez. Sistem yedeklerinde (varsa) kalan kopyalar en geç 30 gün içinde silinir.</p>
+  </section>
+
+  <section class="card">
+    <h2>8. Haklarınız</h2>
+    <p>6698 sayılı Kişisel Verilerin Korunması Kanunu’nun 11. maddesi uyarınca şu haklara sahipsin:</p>
+    <ul>
+      <li>Kişisel verilerinin işlenip işlenmediğini öğrenme ve bilgi talep etme,</li>
+      <li>İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme,</li>
+      <li>Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme,</li>
+      <li>Verilerinin silinmesini veya yok edilmesini isteme,</li>
+      <li>İşlemenin kanuna aykırı olması hâlinde zararın giderilmesini talep etme,</li>
+      <li>Kişiler Veri Koruma Kurumu’na şikâyette bulunma.</li>
+    </ul>
+    <p>Bu haklarını kullanmak için aşağıdaki iletişim adresine yazabilirsin. Talebin en geç 30 gün içinde yanıtlanır.</p>
+  </section>
+
+  <section class="card">
+    <h2>9. Çocuklar</h2>
+    <p>Uygulama işletme sahiplerine yöneliktir ve 18 yaşın altındaki kişilere yönelik değildir. Bilerek 18 yaşın altındaki kişilerden veri toplamayız.</p>
+  </section>
+
+  <section class="card">
+    <h2>10. Değişiklikler</h2>
+    <p>Bu politikayı zaman zaman güncelleyebiliriz. Önemli değişiklikler olduğunda bu sayfadaki “Son güncelleme” tarihi değişir.</p>
+  </section>
+
+  <section class="card">
+    <h2>11. İletişim</h2>
+    <p><b data-developer>Geliştirici</b><br>
+    E-posta: <a id="contact-link" href="#"><span data-contact>glyadgzl@hotmail.com</span></a></p>
+  </section>
+</main>
 
 <script>
-(function () {
-  var tr = document.getElementById('doc-tr');
-  var en = document.getElementById('doc-en');
-  var btnTr = document.getElementById('btn-tr');
-  var btnEn = document.getElementById('btn-en');
+  // ====== BURAYI DOLDUR ======
+  const CONFIG = {
+    appName: 'Kasivo',                // Play Store'daki uygulama adıyla aynı olmalı
+    developer: 'Gülay ADIGÜZEL',     // Play Console'daki geliştirici adıyla aynı olmalı
+    contactEmail: 'glyadgzl@hotmail.com',
+    updatedAt: '2 Kasım 2026',
+    deletionPage: 'kasivo_delete_account.html', // aynı klasördeki hesap silme sayfası
+  };
+  // ===========================
 
-  function setLang(lang, updateHash) {
-    var isEn = lang === 'en';
-    tr.classList.toggle('active', !isEn);
-    en.classList.toggle('active', isEn);
-    btnTr.setAttribute('aria-pressed', String(!isEn));
-    btnEn.setAttribute('aria-pressed', String(isEn));
-    document.documentElement.lang = isEn ? 'en' : 'tr';
-    if (updateHash) {
-      try { history.replaceState(null, '', isEn ? '#en' : location.pathname + location.search); } catch (e) {}
-    }
-  }
-
-  btnTr.addEventListener('click', function () { setLang('tr', true); });
-  btnEn.addEventListener('click', function () { setLang('en', true); });
-
-  var h = (location.hash || '').replace('#', '');
-  setLang(h === 'en' || h === 'delete' ? 'en' : 'tr', false);
-  if (h === 'sil' || h === 'delete') {
-    var el = document.getElementById(h);
-    if (el) el.scrollIntoView();
-  }
-})();
+  document.title = 'Gizlilik Politikası — ' + CONFIG.appName;
+  document.querySelectorAll('[data-app-name]').forEach(e => e.textContent = CONFIG.appName);
+  document.querySelectorAll('[data-developer]').forEach(e => e.textContent = CONFIG.developer);
+  document.querySelectorAll('[data-contact]').forEach(e => e.textContent = CONFIG.contactEmail);
+  document.querySelectorAll('[data-updated]').forEach(e => e.textContent = CONFIG.updatedAt);
+  document.getElementById('contact-link').href = 'mailto:' + CONFIG.contactEmail;
+  document.getElementById('delete-link').href = CONFIG.deletionPage;
 </script>
 </body>
 </html>
